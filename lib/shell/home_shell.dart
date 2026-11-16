@@ -45,11 +45,11 @@ class HomeShell extends StatelessWidget {
             selectedIcon: Icon(Icons.home), // 選中時用的 icon
             label: '首頁',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.search_outlined),
-            selectedIcon: Icon(Icons.search),
-            label: '搜尋',
-          ),
+          // NavigationDestination(
+          //   icon: Icon(Icons.search_outlined),
+          //   selectedIcon: Icon(Icons.search),
+          //   label: '搜尋',
+          // ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),
             selectedIcon: Icon(Icons.person),
