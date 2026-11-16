@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
     //   用「路由驅動」模式啟動 app，頁面由 GoRouter 決定，不用 home: 參數
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Cloudflare image ai',
       // 全域主題：Material 3、以藍色為種子色
       theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       // 把 GoRouter 實例掛進來。
