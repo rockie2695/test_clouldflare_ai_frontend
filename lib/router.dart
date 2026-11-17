@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'pages/home_page.dart';
 import 'pages/account_page.dart';
 import 'shell/home_shell.dart';
+import 'pages/text2img_page.dart';
+import 'pages/img2img_page.dart';
 
 // ⭐ _rootNavigatorKey 是什麼：
 //   GlobalKey<NavigatorState> = 一個「全局唯一」的鑰匙，
@@ -58,18 +60,18 @@ final GoRouter appRouter = GoRouter(
               // routes：這個路徑下的子路由。
               // 子路由的 path 不要加 leading "/"，
               // 完整路徑 = 父 path + "/" + 子 path。
-            //   routes: [
-            //     GoRoute(
-            //       // 完整路徑：/home/detail/:id
-            //       // :id 是路徑參數，用 state.pathParameters['id'] 取。
-            //       path: 'detail/:id',
-            //       builder: (context, state) =>
-            //           DetailPage(id: state.pathParameters['id']!),
-            //       // 這頁沒有 parentNavigatorKey，
-            //       // 所以它會被 push 進「首頁 branch 自己的 Navigator」，
-            //       // 結果就是底部導航欄仍然可見（我們要的效果）。
-            //     ),
-            //   ],
+              //   routes: [
+              //     GoRoute(
+              //       // 完整路徑：/home/detail/:id
+              //       // :id 是路徑參數，用 state.pathParameters['id'] 取。
+              //       path: 'detail/:id',
+              //       builder: (context, state) =>
+              //           DetailPage(id: state.pathParameters['id']!),
+              //       // 這頁沒有 parentNavigatorKey，
+              //       // 所以它會被 push 進「首頁 branch 自己的 Navigator」，
+              //       // 結果就是底部導航欄仍然可見（我們要的效果）。
+              //     ),
+              //   ],
             ),
           ],
         ),
@@ -85,6 +87,22 @@ final GoRouter appRouter = GoRouter(
         // ),
 
         // ── Branch 2：我的 tab ─────────────────────────────
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/text2img',
+              builder: (context, state) => const Text2ImgPage(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/img2img',
+              builder: (context, state) => const Img2ImgPage(),
+            ),
+          ],
+        ),
         StatefulShellBranch(
           routes: [
             GoRoute(

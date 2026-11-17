@@ -25,7 +25,28 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cloudflare image ai',
       // 全域主題：Material 3、以藍色為種子色
-      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
+      theme: ThemeData(
+        // ① 使用 Material 3 设计规范
+        //    - 决定整体视觉风格（圆角、阴影、配色逻辑）
+        //    - NavigationBar / FilledButton 等 M3 组件必须有它才正常显示
+        useMaterial3: true,
+        // ② 用一颗「种子色」自动生成整套配色方案
+        //    Flutter 会据此推导出 primary / secondary / surface / error 等
+        //    所有组件的默认颜色都会围绕这个蓝色自动协调
+        colorSchemeSeed: Colors.blue,
+        // ③ 单独定制「所有 NavigationBar」的默认外观
+        //    在这里写一次，app 里每个 NavigationBar 不写属性都会用这里的值
+        //    优先级：组件上直接写的属性 > 这里 > Flutter 内置默认
+        navigationBarTheme: NavigationBarThemeData(
+          // 底部导航栏的背景色：白色
+          backgroundColor: Colors.white,
+          // 选中 tab 下方「胶囊指示器」的底色
+          // Color(0xFF1E88E5) = 一个蓝色（0xFF = 不透明，后面 6 位是 RGB）
+          // .withOpacity(0.15) = 变成 15% 透明度，即很淡的蓝色
+          indicatorColor: const Color(0xFF1E88E5).withValues(alpha: 0.15),
+          
+        ),
+      ),
       // 把 GoRouter 實例掛進來。
       // 從此所有頁面切換都由 appRouter 控制，
       // Flutter 不再自己管頁面棧（除了 root navigator 內部）。

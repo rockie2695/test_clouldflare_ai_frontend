@@ -51,6 +51,16 @@ class HomeShell extends StatelessWidget {
           //   label: '搜尋',
           // ),
           NavigationDestination(
+            icon: Icon(Icons.text_snippet_outlined),
+            selectedIcon: Icon(Icons.text_snippet),
+            label: 'txt2img',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.image_outlined),
+            selectedIcon: Icon(Icons.image),
+            label: 'img2img',
+          ),
+          NavigationDestination(
             icon: Icon(Icons.person_outline),
             selectedIcon: Icon(Icons.person),
             label: '我的',
