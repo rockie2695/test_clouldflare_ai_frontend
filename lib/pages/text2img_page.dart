@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class Text2ImgPage extends StatelessWidget {
   const Text2ImgPage({super.key});

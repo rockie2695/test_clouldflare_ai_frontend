@@ -1,5 +1,5 @@
 name: test_clouldflare_ai_frontend
-description: "A new Flutter project."
+description: "A test clouldflare ai frontend Flutter project."
 publish_to: 'none'
 version: 0.1.0+1
 
@@ -10,8 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
   go_router: ^18.1.4
+  http: ^1.6.0
   image_picker: ^1.2.4
 
+  material_ui: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

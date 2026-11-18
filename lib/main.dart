@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 // 路由總表，裡面定義了 appRouter
 import 'router.dart';
 
@@ -44,7 +44,37 @@ class MainApp extends StatelessWidget {
           // Color(0xFF1E88E5) = 一个蓝色（0xFF = 不透明，后面 6 位是 RGB）
           // .withOpacity(0.15) = 变成 15% 透明度，即很淡的蓝色
           indicatorColor: const Color(0xFF1E88E5).withValues(alpha: 0.15),
-          
+          // ④ 文字标签样式：随「选中/未选中」状态变化
+          //    WidgetStateProperty = 「属性值依赖组件状态」的表达方式
+          //    resolveWith(函数) = 传一个函数，Flutter 渲染时按当前状态调用它取值
+          //    states 是一个集合，因为组件可能同时处于多个状态
+          //    （例如「已选中 + 鼠标悬停」）
+          labelTextStyle: WidgetStateProperty.resolveWith((states) {
+            // 检查当前状态集合里是否包含「已选中」
+            final selected = states.contains(WidgetState.selected);
+
+            return TextStyle(
+              // 选中 → 蓝色；未选中 → 灰色
+              color: selected ? const Color(0xFF1E88E5) : Colors.grey,
+              // 选中 → 半粗体(w600)；未选中 → 常规
+              fontWeight: selected ? FontWeight.w600 : FontWeight.normal,
+              // 字号固定 12，不随状态变
+              fontSize: 12,
+            );
+          }),
+
+          // ⑤ 图标样式：同样随「选中/未选中」变化
+          //    结构与 labelTextStyle 完全一致，只是控制的是 Icon
+          iconTheme: WidgetStateProperty.resolveWith((states) {
+            final selected = states.contains(WidgetState.selected);
+
+            return IconThemeData(
+              // 选中 → 蓝色；未选中 → 灰色
+              color: selected ? const Color(0xFF1E88E5) : Colors.grey,
+              // 选中 → 26px（放大 2px 更突出）；未选中 → 24px
+              size: selected ? 26 : 24,
+            );
+          }),
         ),
       ),
       // 把 GoRouter 實例掛進來。
